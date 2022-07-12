@@ -9,7 +9,7 @@
 " --------------------------------------------------------------------------------{
 let b:comment_leader ='#' 
 autocmd FileType *                       let b:comment_leader ='#' 
-autocmd FileType c,cpp,cs,java,scala,php     let b:comment_leader = '//'
+autocmd FileType c,cpp,cs,java,scala,php,go     let b:comment_leader = '//'
 autocmd FileType pascal,delphi,js,javascript let b:comment_leader = '//'
 autocmd FileType dosbatch                let b:comment_leader = '::'
 autocmd FileType autohotkey              let b:comment_leader = ';;'
@@ -72,9 +72,9 @@ endfun
 fun! InsertBoxedComment()
     let c=b:comment_leader
     let cb=b:comment_leader_box
-    exe "normal o".c." --------------------------------------------------------------------------------}"
+    exe "normal o".c." --------------------------------------------------------------------------------"
     exe "normal o".c.cb.' ---  '
-    exe "normal o".c." --------------------------------------------------------------------------------{"
+    exe "normal o".c." --------------------------------------------------------------------------------"
     "normal jVkk=j$
     normal 0k$
     startinsert
@@ -82,11 +82,11 @@ endfun
 fun! WrapComment()
     let c=b:comment_leader
     let cb=b:comment_leader_box
-    exe "normal O".c." --------------------------------------------------------------------------------}"
+    exe "normal O".c." --------------------------------------------------------------------------------"
     normal ^j
     call UnComment()
     exe "normal i".c.cb.' --- '
-    exe "normal o".c." --------------------------------------------------------------------------------{"
+    exe "normal o".c." --------------------------------------------------------------------------------"
     normal ^k6l
 endfun
 
